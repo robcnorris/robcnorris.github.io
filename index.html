@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robert Norris — English Language Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:     #1C1C1C;
+    --bg:        #F7F5F0;
+    --green:     #2C4A3E;
+    --ochre:     #8B7355;
+    --grey:      #E8E4DC;
+    --mid:       #6B6560;
+    --max-w:     720px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--black);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── LAYOUT ── */
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  section { padding: 4rem 0; }
+
+  /* ── HEADER ── */
+  header {
+    padding: 5rem 0 3rem;
+    border-bottom: 1px solid var(--grey);
+  }
+
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 4.2rem);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    color: var(--black);
+  }
+
+  .rule {
+    width: 3rem;
+    height: 2px;
+    background: var(--green);
+    margin: 1.4rem 0 1.6rem;
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--mid);
+    max-width: 520px;
+    line-height: 1.5;
+  }
+
+  /* ── NAV ── */
+  nav {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+
+  nav a:hover { border-color: var(--green); }
+
+  /* ── ABOUT ── */
+  #about p {
+    font-size: 1.05rem;
+    color: var(--black);
+    max-width: 620px;
+    margin-bottom: 1.2rem;
+  }
+
+  #about p:last-child { margin-bottom: 0; }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+
+  .section-sub {
+    font-size: 0.95rem;
+    color: var(--mid);
+    margin-bottom: 2.5rem;
+    max-width: 540px;
+  }
+
+  /* ── MARKET SECTIONS ── */
+  .market {
+    border-top: 1px solid var(--grey);
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .market::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4rem;
+    bottom: 4rem;
+    width: 2px;
+  }
+
+  .market-corporate::before { background: var(--green); }
+  .market-academic::before  { background: var(--ochre); }
+
+  /* ── PACKAGES ── */
+  .packages {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .package {
+    background: white;
+    border: 1px solid var(--grey);
+    padding: 1.8rem 2rem;
+    position: relative;
+  }
+
+  .package-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+  }
+
+  .package-detail {
+    font-size: 0.88rem;
+    color: var(--mid);
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+  }
+
+  .package-desc {
+    font-size: 0.95rem;
+    color: var(--black);
+    line-height: 1.65;
+    margin-bottom: 1.2rem;
+  }
+
+  .package-price {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .price-corporate { color: var(--green); }
+  .price-academic  { color: var(--ochre); }
+
+  .package-tag {
+    position: absolute;
+    top: 1.8rem;
+    right: 2rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid;
+  }
+
+  .tag-corporate {
+    color: var(--green);
+    border-color: var(--green);
+  }
+
+  .tag-academic {
+    color: var(--ochre);
+    border-color: var(--ochre);
+  }
+
+  .tag-enquiry {
+    color: var(--mid);
+    border-color: var(--grey);
+  }
+
+  /* ── CREDENTIALS ── */
+  #credentials {
+    border-top: 1px solid var(--grey);
+  }
+
+  .cred-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .cred-item {
+    padding: 1.4rem 0;
+    border-top: 1px solid var(--grey);
+  }
+
+  .cred-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 0.3rem;
+  }
+
+  .cred-detail {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    border-top: 1px solid var(--grey);
+  }
+
+  .contact-block {
+    margin-top: 2rem;
+    max-width: 540px;
+  }
+
+  .contact-block p {
+    font-size: 1rem;
+    color: var(--black);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--green); }
+
+  .contact-link-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    min-width: 100px;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 2.5rem;
+    padding: 0.85rem 2rem;
+    background: var(--green);
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+
+  .btn:hover { background: #1e3529; }
+
+  .btn-ochre {
+    background: var(--ochre);
+  }
+
+  .btn-ochre:hover { background: #6e5a40; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--grey);
+    padding: 2.5rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--mid);
+  }
+
+  .footer-note {
+    font-size: 0.78rem;
+    color: var(--mid);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .market { padding-left: 1.2rem; }
+    .package { padding: 1.4rem 1.4rem; }
+    .package-tag { position: static; margin-bottom: 0.8rem; display: inline-block; }
+    nav { gap: 1.4rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap">
+    <h1 class="name">Robert Norris</h1>
+    <div class="rule"></div>
+    <p class="tagline">English Language Consultant &amp; Cambridge Assessment Examiner</p>
+    <nav>
+      <a href="#corporate">Corporate &amp; Executive</a>
+      <a href="#academic">Academic &amp; Examination</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <p>I work with professionals who need to use English with precision and authority — in negotiations, presentations, legal and regulatory contexts, and high-level examinations.</p>
+    <p>My formation is literary and philological: Aberdeen, Oxford, and doctoral research at the University of Zürich. I am interested in how language carries meaning, not just how it functions. That interest shapes the way I work.</p>
+    <p>Twenty-five years of teaching and examining across Europe, working with corporate professionals, legal practitioners, military personnel, and university candidates. Accredited Cambridge Assessment Oral Examiner for C1 Advanced and C2 Proficiency.</p>
+    <p>British. Based in Switzerland. Bilingual in English and Italian.</p>
+  </div>
+</section>
+
+<!-- CORPORATE -->
+<section id="corporate">
+  <div class="wrap">
+    <div class="market market-corporate">
+      <div class="section-label">Market One</div>
+      <h2 class="section-title">Corporate &amp; Executive</h2>
+      <p class="section-sub">B2B English language training for organisations, teams, and senior professionals operating in high-stakes, English-medium environments. All sessions conducted online.</p>
+
+      <div class="packages">
+
+        <div class="package">
+          <span class="package-tag tag-corporate">Entry point</span>
+          <div class="package-name">Diagnostic Session</div>
+          <div class="package-detail">30 minutes — single session</div>
+          <p class="package-desc">A needs assessment establishing the client's current level, professional context, and communication objectives. The natural entry point before committing to a longer engagement.</p>
+          <div class="package-price price-corporate">CHF 100</div>
+        </div>
+
+        <div class="package">
+          <div class="package-name">Focused Intervention</div>
+          <div class="package-detail">4 × 60-minute sessions</div>
+          <p class="package-desc">Targeted work on a specific, defined communication challenge — a presentation, a negotiation, a regulatory submission, or a board-level engagement. Structured around a single outcome.</p>
+          <div class="package-price price-corporate">CHF 600</div>
+        </div>
+
+        <div class="package">
+          <div class="package-name">Executive Development Block</div>
+          <div class="package-detail">10 × 60-minute sessions</div>
+          <p class="package-desc">A sustained coaching relationship covering executive communication across multiple professional contexts. Structured progression and measurable outcomes throughout.</p>
+          <div class="package-price price-corporate">CHF 1,500</div>
+        </div>
+
+        <div class="package">
+          <span class="package-tag tag-enquiry">Enquiry</span>
+          <div class="package-name">Organisational &amp; Group Training</div>
+          <div class="package-detail">Bespoke — teams, departments, cohorts</div>
+          <p class="package-desc">Bespoke programmes for organisations. Includes a complimentary 45-minute scoping consultation to establish organisational objectives, map the programme structure, and agree measurable outcomes before the engagement begins.</p>
+          <div class="package-price price-corporate">Rate on enquiry</div>
+        </div>
+
+      </div>
+
+      <a href="#contact" class="btn">Make an enquiry</a>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMIC -->
+<section id="academic">
+  <div class="wrap">
+    <div class="market market-academic">
+      <div class="section-label">Market Two</div>
+      <h2 class="section-title">Academic &amp; Examination</h2>
+      <p class="section-sub">Cambridge C1 and C2 examination preparation, Oxbridge candidacy, and academic English for university and postgraduate candidates. All sessions conducted online.</p>
+
+      <div class="packages">
+
+        <div class="package">
+          <span class="package-tag tag-academic">Entry point</span>
+          <div class="package-name">Diagnostic Session</div>
+          <div class="package-detail">30 minutes — single session</div>
+          <p class="package-desc">A needs assessment establishing the candidate's current level, examination target, and preparation timeline. The natural entry point before committing to a longer programme.</p>
+          <div class="package-price price-academic">CHF 100</div>
+        </div>
+
+        <div class="package">
+          <div class="package-name">Examination Sprint</div>
+          <div class="package-detail">8 × 45-minute sessions</div>
+          <p class="package-desc">Intensive Cambridge C1 Advanced or C2 Proficiency preparation, structured around the examination's four components with particular focus on the oral examination. Delivered by an accredited Cambridge Assessment oral examiner.</p>
+          <div class="package-price price-academic">CHF 720</div>
+        </div>
+
+        <div class="package">
+          <div class="package-name">Oxbridge Preparation</div>
+          <div class="package-detail">6 × 45-minute sessions</div>
+          <p class="package-desc">Written and oral English at the level required for Oxbridge application and interview — argument construction, academic register, close reading, and interview technique.</p>
+          <div class="package-price price-academic">CHF 540</div>
+        </div>
+
+        <div class="package">
+          <span class="package-tag tag-enquiry">Extended</span>
+          <div class="package-name">Extended Academic Programme</div>
+          <div class="package-detail">12 × 45-minute sessions</div>
+          <p class="package-desc">Sustained development across academic writing, examination preparation, and oral communication. Includes a complimentary 45-minute scoping consultation to establish the candidate's objectives, current level, and programme priorities before the engagement begins.</p>
+          <div class="package-price price-academic">CHF 1,080</div>
+        </div>
+
+      </div>
+
+      <a href="#contact" class="btn btn-ochre">Make an enquiry</a>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="wrap">
+    <div class="section-label">Formation</div>
+    <h2 class="section-title">Credentials</h2>
+
+    <div class="cred-grid">
+      <div class="cred-item">
+        <div class="cred-title">University of Zürich</div>
+        <div class="cred-detail">Doctoral Researcher<br>Supervisor: Prof. Olga Timofeeva</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-title">University of Oxford</div>
+        <div class="cred-detail">MSt in General Linguistics<br>&amp; Comparative Philology</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-title">University of Aberdeen</div>
+        <div class="cred-detail">MA Hons in English<br>First Class Honours</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-title">Cambridge Assessment English</div>
+        <div class="cred-detail">Accredited Oral Examiner<br>C1 Advanced &amp; C2 Proficiency</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-title">CELTA</div>
+        <div class="cred-detail">Cambridge Assessment English<br>Certificate in English Language Teaching</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-title">Independent Practice</div>
+        <div class="cred-detail">25 years across Europe<br>Registered: Swiss UID &amp; SVA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-block">
+      <p>For corporate and organisational enquiries, please contact me directly by email or via LinkedIn. For examination preparation and academic programmes, CoLanguage and Superprof profiles are available for direct booking.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:robert@rcnorris.com">
+          <span class="contact-link-label">Email</span>
+          <span>robert@rcnorris.com</span>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/robert-charles-norris-67aa43415" target="_blank" rel="noopener">
+          <span class="contact-link-label">LinkedIn</span>
+          <span>Robert Norris</span>
+        </a>
+        <a class="contact-link" href="#" target="_blank" rel="noopener">
+          <span class="contact-link-label">CoLanguage</span>
+          <span>Profile — coming soon</span>
+        </a>
+        <a class="contact-link" href="#" target="_blank" rel="noopener">
+          <span class="contact-link-label">Superprof</span>
+          <span>Profile — coming soon</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-name">Robert Norris — English Language Consultant</div>
+      <div class="footer-note">Zürich, Switzerland &nbsp;·&nbsp; Registered Swiss UID &amp; SVA</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
